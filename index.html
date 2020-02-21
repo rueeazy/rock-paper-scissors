@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+      const choices = ['Rock', 'Paper', 'Scissors']
+
+      function computerPlay() {
+          return choices[Math.floor(Math.random() * choices.length)];
+      }
+
+      const playerSelection = prompt('Rock. Paper. Scissors?').toLowerCase()
+      const computerSelection = computerPlay()
+      let myScore = 0
+      let pcScore = 0
+
+      function playRound(playerSelection, computerSelection) {
+          if (computerSelection == 'Paper' && playerSelection =='paper') {
+              return 'It\'s a tie!';
+          } else if (computerSelection == 'Paper' && playerSelection == 'rock') {
+            pcScore ++;
+              return 'You lose! Paper beats rock!';
+          } else if (computerSelection == 'Paper' && playerSelection == 'scissors') {
+            myScore ++;
+              return 'You win! Scissors beats paper!';
+          } else if (computerSelection == 'Rock' && playerSelection == 'paper') {
+            myScore ++;
+              return 'You win! Paper beats rock!';
+          } else if (computerSelection == 'Rock' && playerSelection == 'rock') {
+              return 'It\'s a tie!';
+          } else if (computerSelection == 'Rock' && playerSelection == 'scissors') {
+            pcScore ++;
+              return 'You lose! Rock beats scissors!';
+          } else if (computerSelection == 'Scissors' && playerSelection == 'paper') {
+            pcScore ++;
+              return 'You lose! Scissors beats paper!'
+          } else if (computerSelection == 'Scissors' && playerSelection == 'rock') {
+            myScore ++;
+              return 'You win! Rock beats scissors!'
+          } else (computerSelection == 'Scissors' && playerSelection == 'scissors') 
+              return 'It\'s a tie!'
+          }
+    
+      function winner() {
+        if (myScore > pcScore) {
+            return 'You Won!';
+        } else if (myScore == pcScore) {
+            return 'You tied!';
+        } else (pcScore > myScore) 
+            return 'The computer won!'
+        }
+
+      function game() {
+        myScore = 0
+        pcScore = 0
+        let playerSelection = prompt('Rock. Paper. Scissors?').toLowerCase() 
+        console.log(playRound(playerSelection, computerPlay()));
+        console.log(playRound(playerSelection, computerPlay()));
+        console.log(playRound(playerSelection, computerPlay()));
+        console.log(playRound(playerSelection, computerPlay()));
+        console.log(playRound(playerSelection, computerPlay()));
+        return winner()
+      }
+      
+
+     
+  </script>
+</body>
+</html>
