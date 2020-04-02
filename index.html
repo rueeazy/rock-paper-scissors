@@ -6,19 +6,20 @@
 </head>
 <body>
   <script>
-      const choices = ['Rock', 'Paper', 'Scissors']
+    const choices = ['Rock', 'Paper', 'Scissors']
+    const playerSelection = prompt('Rock. Paper. Scissors?').toLowerCase()
+    const computerSelection = computerPlay()
+    let myScore = 0
+    let pcScore = 0
 
+      
       function computerPlay() {
           return choices[Math.floor(Math.random() * choices.length)];
       }
 
-      const playerSelection = prompt('Rock. Paper. Scissors?').toLowerCase()
-      const computerSelection = computerPlay()
-      let myScore = 0
-      let pcScore = 0
 
       function playRound(playerSelection, computerSelection) {
-          if (computerSelection == 'Paper' && playerSelection =='paper') {
+          if (computerSelection == 'Paper' && playerSelection == 'paper') {
               return 'It\'s a tie!';
           } else if (computerSelection == 'Paper' && playerSelection == 'rock') {
             pcScore ++;
@@ -61,7 +62,7 @@
         console.log(playRound(playerSelection, computerPlay()));
         console.log(playRound(playerSelection, computerPlay()));
         console.log(playRound(playerSelection, computerPlay()));
-        console.log(playRound(playerSelection, computerPlay()));
+        console.log(playRound(playerSelection, computerPlay()))
         return winner()
       }
       

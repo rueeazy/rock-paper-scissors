@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    const choices = ['Rock', 'Paper', 'Scissors']
+    const computerSelection = computerPlay()
+
+      
+      function computerPlay() {
+          return choices[Math.floor(Math.random() * choices.length)];
+      }
+
+      function playRound(playerSelection, computerSelection) {
+          if (computerSelection == 'Paper' && playerSelection == 'paper') {
+            tScore++;
+            tieScore.innerHTML = 'Tied Score ' + `${tScore}` // = 'It\'s a tie!';
+              return announcer.textContent = 'It\'s a tie!';
+          } else if (computerSelection == 'Paper' && playerSelection == 'rock') {
+            pScore++;
+            pcScore.innerHTML = 'Computer Score ' + `${pScore}` // = 'You lose! Paper beats rock!';
+              return announcer.textContent =  'You lose! Paper beats rock!';
+          } else if (computerSelection == 'Paper' && playerSelection == 'scissors') {
+            mScore++;
+            myScore.innerHTML = 'Your Score ' + `${mScore}`// =  'You win! Scissors beats paper!';
+              return announcer.textContent =  'You win! Scissors beats paper!';
+          } else if (computerSelection == 'Rock' && playerSelection == 'paper') {
+            mScore++;
+            myScore.innerHTML = 'Your Score ' + `${mScore}` // = 'You win! Paper beats rock!';
+              return announcer.textContent =  'You win! Paper beats rock!';
+          } else if (computerSelection == 'Rock' && playerSelection == 'rock') {
+            tScore++;
+            tieScore.innerHTML = 'Tied Score ' + `${tScore}` // = 'It\'s a tie!';
+              return announcer.textContent =  'It\'s a tie!';
+          } else if (computerSelection == 'Rock' && playerSelection == 'scissors') {
+            pScore++;
+            pcScore.innerHTML = 'Computer Score ' + `${pScore}` // = 'You lose! Rock beats scissors!';
+              return announcer.textContent =  'You lose! Rock beats scissors!';
+          } else if (computerSelection == 'Scissors' && playerSelection == 'paper') {
+            pScore++;
+            pcScore.innerHTML = 'Computer Score ' + `${pScore}` // = 'You lose! Scissors beats paper!';
+              return announcer.textContent =  'You lose! Scissors beats paper!';
+          } else if (computerSelection == 'Scissors' && playerSelection == 'rock') {
+            mScore++;
+            myScore.innerHTML = 'Your Score ' + `${mScore}` // = 'You win! Rock beats scissors!';
+              return announcer.textContent =  'You win! Rock beats scissors!';
+          } else (computerSelection == 'Scissors ' && playerSelection == 'scissors')
+            tScore++;  
+          tieScore.innerHTML = 'Tied Score ' + `${tScore}` // = 'It\'s a tie!';
+              return announcer.textContent =  'It\'s a tie!';
+          }
+      let tScore = 0;
+      let pScore = 0;
+      let mScore = 0;
+    
+      function winner() {
+        if (myScore > pcScore) {
+            return 'You Won!';
+        } else if (myScore == pcScore) {
+            return 'You tied!';
+        } else (pcScore > myScore) 
+            return 'The computer won!'
+        }
+
+      function game(a) {
+        if (`${mScore}` == 5) {
+          return announcer.textContent = 'Game Over! You Win!';
+        } else if (`${pScore}` == 5) {
+          return announcer.textContent = 'Game Over! You Lost!';
+        } else {
+            const playerSelection = a;
+            let computerSelection = computerPlay()
+            return playRound(playerSelection, computerSelection); 
+        }
+      }
+
+      // The code below is the DOM manipulation to add buttons etc.// 
+
+      function createBtn(text = 'No Text') {
+        const btn = document.createElement('button');
+        btn.innerText = text;
+        document.body.appendChild(btn);
+        return btn;
+      }
+
+    const rock = createBtn('Rock');
+      rock.addEventListener('click', () => {
+       let playerPicked = 'rock'
+       return game(playerPicked);
+      })
+
+    const scissors = createBtn('Scissors');
+      scissors.addEventListener('click', () => {
+       let playerPicked = 'scissors'
+       return game(playerPicked);
+      })
+
+    const paper = createBtn('Paper');
+      paper.addEventListener('click', () => {
+       let playerPicked = 'paper'
+       return game(playerPicked);
+      })
+      
+    const results = document.createElement('div');
+    let announcer = document.createElement('h4');
+    let myScore = document.createElement('p');
+    let pcScore = document.createElement('p');
+    let tieScore = document.createElement('p');
+
+
+      document.body.appendChild(results);
+      results.appendChild(myScore);
+      results.appendChild(pcScore);
+      results.appendChild(tieScore);
+      results.appendChild(announcer);
+      
+        
+      
+
+     
+  </script>
+</body>
+</html>
